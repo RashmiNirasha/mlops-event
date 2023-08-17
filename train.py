@@ -1,4 +1,5 @@
 # import libraries
+import mlflow
 import argparse
 import pandas as pd
 import numpy as np
@@ -10,6 +11,7 @@ import matplotlib.pyplot as plt
 
 def main(args):
 	# TO DO: enable autologging
+    mlflow.autolog()
 
 
     # read data
@@ -28,12 +30,16 @@ def main(args):
 def get_data(path):
     print("Reading data...")
     df = pd.read_csv(path)
+
     
     return df
 
 # function that splits the data
 def split_data(df):
     print("Splitting data...")
+    X, y = df[['Pregnancies','PlasmaGlucose','DiastolicBloodPressure','TricepsThickness','SerumInsulin','BMI','DiabetesPedigree','Age']].values, df['Diabetic'].values
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
+    return X_train, X_test, y_train, y_test
     
 
     
