@@ -18,4 +18,4 @@ jobs:
     - name: Submit Azure ML job
       run: |
         # Replace with the actual command to submit your Azure ML job
-        az ml job create --file "${{ github.workspace }}/mlopsPresenationtest/src/job.yml"
+        az ml job create --file "${{ github.workspace }}/job.yml"
